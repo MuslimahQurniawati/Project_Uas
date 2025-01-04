@@ -4,8 +4,8 @@ session_start();
 // Konfigurasi database
 $host = 'localhost';
 $dbname = 'toko_online';
-$user = 'root'; // Ganti sesuai dengan username database
-$password = ''; // Ganti sesuai dengan password database
+$user = 'root'; 
+$password = ''; 
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
@@ -17,14 +17,14 @@ try {
             $username = $_POST['username'];
             $password = $_POST['password'];
 
-            // Ambil data dari database
+        
             $stmt = $pdo->prepare("SELECT * FROM users WHERE username = :username");
             $stmt->execute(['username' => $username]);
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($user && password_verify($password, $user['password'])) {
-                $_SESSION['username'] = $username; // Set session
-                header('Location: index.php'); // Redirect ke halaman index
+                $_SESSION['username'] = $username; 
+                header('Location: index.php'); 
                 exit;
             } else {
                 $error = "Username atau password salah!";
@@ -47,12 +47,12 @@ try {
     .login-box{
         width: 500px;
         height: 300px;
-        border: 2px solid;
+
     }
 </style>
 <body>
     <div class="main d-flex justify-content-center align-items-center">
-        <div class="login-box p-5">
+        <div class="login-box p-5 shadow">
             <form method="POST" action="">
                 <div>
                     <label for="username">Username</label>
