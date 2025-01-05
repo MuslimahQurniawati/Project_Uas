@@ -111,36 +111,36 @@ $jumlahProduk = mysqli_num_rows($queryProduk);
         <h2>Selamat datang, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h2>
 
         <div class="menu">
-        <div class="card">
-            <div class="icon">
-            <i class="fas fa-align-justify fa-7x"></i>
-            </div>
-            <div class="text">
-            <p class="category">Kategori</p>
-            <p><?php echo $jumlahKategori ?> Kategori</p>
-            <a href="kategori.php" class="detail">Lihat Detail</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="icon">
-            <i class="fas fa-shopping-cart fa-7x"></i>
-            </div>
-            <div class="text">
-            <p class="category">Produk</p>
-            <p><?php echo $jumlahProduk ?> Menu</p>
-            <a href="produk.php" class="detail">Lihat Detail</a>
+            <div class="card">
+                <div class="icon">
+                <i class="fas fa-align-justify fa-7x"></i>
+                </div>
+                <div class="text">
+                <p class="category">Kategori</p>
+                <p><?php echo $jumlahKategori ?> Kategori</p>
+                <a href="kategori.php" class="detail">Lihat Detail</a>
             </div>
         </div>
 
         <div class="card">
             <div class="icon">
-            <i class="fas fa-sign-out fa-7x"></i>
-            </div>
-            <div class="text">
-            <a href="login.php" class="detail"><p class="category">Logout</p></a>
+                <i class="fas fa-shopping-cart fa-7x"></i>
+                </div>
+                <div class="text">
+                <p class="category">Produk</p>
+                <p><?php echo $jumlahProduk ?> Menu</p>
+                <a href="produk.php" class="detail">Lihat Detail</a>
             </div>
         </div>
+
+        <div class="card">
+            <div class="icon">
+                <i class="fas fa-sign-out fa-7x"></i>
+            </div>
+            <div class="text">
+                <a href="login.php" class="detail"><p class="category">Logout</p></a>
+            </div>
+            </div>
         </div>
     </div>
 
