@@ -30,6 +30,10 @@ $jumlahKategori = mysqli_num_rows($queryKategori);
         transition: transform 0.3s ease, box-shadow 0.3s ease; 
     
     }
+    .tabel {
+        margin-top: 5px
+        
+    }
 </style>
 
 <!DOCTYPE html>
@@ -46,7 +50,7 @@ $jumlahKategori = mysqli_num_rows($queryKategori);
     <div class="kotak">
     <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active aria-current="page">
+                <li class="breadcrumb-item active" aria-current="page">
                     <a href="../adminpanel">
                     <i class="fas fa-home "></i>Home
                     </a>
@@ -56,6 +60,46 @@ $jumlahKategori = mysqli_num_rows($queryKategori);
                 </li>
             </ol>
     </nav>
+    <div class="my-5">
+        <h3>Tambah Kategori</h3>
+
+        <form action="" method="post">
+            
+        </form>
+    </div>
+
+    <div class="tabel">
+        <h2>List Kategori</h2>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>No. </th>
+                        <th>Nama</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        $number = 1;
+                        if ($jumlahKategori == 0) {
+                            echo "<tr><td colspan='2'>Tidak Ada data Kategori</td></tr>";
+                        } else {
+                            while ($data = mysqli_fetch_array($queryKategori)) {
+                                ?>
+                                <tr>
+                                    <td><?php echo $number; ?></td>
+                                    <td><?php echo $data['nama']; ?></td>
+                                </tr>
+                                <?php
+                                $number++;
+                            }
+                        }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
     </div>
 
     <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
