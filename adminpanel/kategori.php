@@ -18,21 +18,37 @@ $jumlahKategori = mysqli_num_rows($queryKategori);
 ?>
 
 <style>
-    .kotak{
+    .kotak {
         border: solid;
-        background: linear-gradient(135deg,rgb(167, 90, 75),rgb(154, 48, 96)); /* Gradien menarik */
+        background: linear-gradient(135deg, rgb(167, 90, 75), rgb(154, 48, 96));
         padding: 30px;
-        height: 100vh;
+        height: auto;
         width: 100%;
         border-radius: 15px;
+        overflow: hidden;
         color: white;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        transition: transform 0.3s ease, box-shadow 0.3s ease; 
-    
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .tabel {
-        margin-top: 5px
-        
+
+    table {
+        background-color: rgba(255, 255, 255, 0.9); /* Transparansi latar belakang tabel */
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    table th, table td {
+        padding: 12px 15px;
+        text-align: left;
+    }
+
+    table thead th {
+        background-color: rgba(154, 48, 96, 0.9); /* Warna header tabel */
+        color: white;
+        font-weight: bold;
     }
 </style>
 
@@ -60,12 +76,43 @@ $jumlahKategori = mysqli_num_rows($queryKategori);
                 </li>
             </ol>
     </nav>
-    <div class="my-5">
+    <div class="my-5 col-12 col-md-6">
         <h3>Tambah Kategori</h3>
 
         <form action="" method="post">
-            
+            <div>
+                <label for="kategori">Kategori</label>
+                <input type="text" id="kategori" name="kategori" placeholder="input nama kategori" class="form-control">
+            </div>
+            <div class="mt-3">
+                <button class="btn btn-primary" type="submit" name="simpan_kategori">Simpan</button>
+            </div>
         </form>
+
+        <?php
+            if(isset($_POST['simpan_kategori'])){
+                $kategori = htmlspecialchars($_POST['kategori']);
+                $queryExist = mysqli_query($con, "SELECT nama FROM kategori WHERE nama='$kategori'");
+                $kategoriBaru = mysqli_num_rows($queryExist);
+                
+                if($kategoriBaru > 0){
+                    ?>
+                    <div class="alert alert-warning mt-3" role="alert">Kategori Sudah Ada</div>
+                    <?php
+                } else {
+                    $querySimpan = mysqli_query($con, "INSERT INTO kategori (nama) VALUES ('$kategori')");
+                    
+                    if($querySimpan){
+                        ?>
+                        <div class="alert alert-primary mt-3" role="alert">
+                            Kategori Berhasil Disimpan
+                        </div>
+                        <?php
+                    }
+
+                }
+            }
+        ?>
     </div>
 
     <div class="tabel">
@@ -76,6 +123,7 @@ $jumlahKategori = mysqli_num_rows($queryKategori);
                     <tr>
                         <th>No. </th>
                         <th>Nama</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
