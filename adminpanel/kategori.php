@@ -134,10 +134,15 @@ $jumlahKategori = mysqli_num_rows($queryKategori);
                         } else {
                             while ($data = mysqli_fetch_array($queryKategori)) {
                                 ?>
-                                <tr>
-                                    <td><?php echo $number; ?></td>
-                                    <td><?php echo $data['nama']; ?></td>
-                                </tr>
+                                    <tr>
+                                        <td><?php echo $number; ?></td>
+                                        <td><?php echo $data['nama']; ?></td>
+                                        <td>
+                                        <a href="kategori-detail.php?id=<?php echo $data['id']; ?>"
+
+                                            class="btn btn-info"><i class="fas fa-search"></i>
+                                        </td>
+                                    </tr>
                                 <?php
                                 $number++;
                             }
