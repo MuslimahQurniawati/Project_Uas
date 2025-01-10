@@ -2,22 +2,9 @@
 session_start();
 require "../koneksi.php";
 
-$id = $_GET['id'] ?? null;
-
-
-if (!$id) {
-    header("Location: kategori.php");
-    exit();
-}
-
-$query = mysqli_query($con, "SELECT * FROM kategori WHERE id='$id'");
-$data = mysqli_fetch_assoc($query);
-
-
-if (!$data) {
-    header("Location: kategori.php");
-    exit();
-}
+    $id = $_GET['id'] ?? null;
+    $query =mysqli_query($con, "SELECT * FROM kategori WHERE id='$id'");
+    $data =mysqli_fetch_array($query);
     
 ?>
 <style>
@@ -50,12 +37,14 @@ if (!$data) {
         <form action="" method="post">
         <div>
             <label for="kategori">Kategori</label>
-            <input type="text" name="kategori" class="form-control" value="<?php
-            echo $data['nama']; ?>">
+            <input type="text" name="kategori" class="form-control" 
+                value="<?php echo isset($data['nama']) ? $data['nama'] : ''; ?>">
+
         </div>
 
-        <div class="mt-3">
+        <div class="mt-3 ">
             <button type="submit" class="btn btn-primary" name="editBtn">Edit</button>
+            <button type="submit" class="btn btn-danger" name="deleteBtn">Delete</button>
         </div>
         </form>
 
@@ -64,33 +53,50 @@ if (!$data) {
                 $kategori = htmlspecialchars($_POST['kategori']);
 
                 if($data['nama']==$kategori){
-                
-                     header("Location: kategori.php");
-                
+                    ?>
+                    <meta http-equiv="refresh" content="0; url=kategori.php" />
+                    <?php
                 }
                 else{
-                    $query = mysqli_query($con, "SELECT * FROM kategori WHERE nama='$kategori'");
-                    $jumlahData =mysqli_num_rows($query);
-                    
-                    if($jumlahData > 0){
-                        ?>
-                        <div class="alert alert-warning mt-3" role="alert">Kategori Sudah Ada</div>
-                        <?php
-                    }
-                    else{
-                        $querySimpan = mysqli_query($con, "UPDATE kategori SET nama='$kategori'");
-                        if($querySimpan){
+                        $query = mysqli_query($con, "SELECT * FROM kategori WHERE nama='$kategori'");
+                        $jumlahData =mysqli_num_rows($query);
+                        
+                        if($jumlahData > 0){
                             ?>
-                                <div class="alert alert-primary mt-3" role="alert">
-                                Kategori Berhasil Disimpan
-                                </div>
-
-                                <meta http-equiv="refresh" content="0; url=kategori.php" />
+                            <div class="alert alert-warning mt-3" role="alert">Kategori Sudah Ada</div>
                             <?php
-                        } else{
-                            echo mysqli_error($con);
+                        }
+                        else{
+                            $querySimpan = mysqli_query($con, "UPDATE kategori SET nama='$kategori'");
+                            if($querySimpan){
+                                ?>
+                                    <div class="alert alert-primary mt-3" role="alert">
+                                    Kategori Berhasil Disimpan
+                                    </div>
+    
+                                    <meta http-equiv="refresh" content="0; url=kategori.php" />
+                                <?php
+                            } else{
+                                echo mysqli_error($con);
+                            }
                         }
                     }
+                }
+            
+
+            if(isset($_PPOST['deleteBtn'])){
+                $queryDelete = mysqli_query($con, "DELETE FROM kategori WHERE id='$id'");
+            
+                if($queryDelete){
+                    ?>
+                    <div class="alert alert-primary mt-3" role="alert">
+                        Kategori Berhasil Dihapus
+                    </div>
+
+                    <meta http-equiv="refresh" content="0; url=kategori.php" />
+                    <?php
+                }else{
+                    echo mysqli_error($con);
                 }
             }
         ?>
