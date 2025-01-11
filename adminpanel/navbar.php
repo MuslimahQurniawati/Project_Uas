@@ -9,10 +9,10 @@
                     <a class="nav-link" href="kategori.php">Kategori</a>
                 </li>
                 <li class="nav-item me-3">
-                    <a class="nav-link" href="kategori.php">Produk</a>
+                    <a class="nav-link" href="produk.php">Produk</a>
                 </li>
                 <li class="nav-item me-3">
-                    <a class="nav-link" href="kategori.php">Logout</a>
+                    <a class="nav-link" href="login.php">Logout</a>
                 </li>   
             </ul>
         </div>

@@ -2,8 +2,8 @@
 session_start();
 require "../koneksi.php";
 
-    $id = $_GET['id'] ?? null;
-    $query =mysqli_query($con, "SELECT * FROM kategori WHERE id='$id'");
+    $id = $_GET['p'];
+    $query =mysqli_query($con, "SELECT * FROM kategori WHERE id='p'");
     $data =mysqli_fetch_array($query);
     
 ?>
@@ -67,7 +67,7 @@ require "../koneksi.php";
                             <?php
                         }
                         else{
-                            $querySimpan = mysqli_query($con, "UPDATE kategori SET nama='$kategori'");
+                            $querySimpan = mysqli_query($con, "UPDATE kategori SET nama='$kategori' WHERE id='$id'");
                             if($querySimpan){
                                 ?>
                                     <div class="alert alert-primary mt-3" role="alert">
