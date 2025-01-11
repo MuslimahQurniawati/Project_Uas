@@ -5,6 +5,7 @@ require "../koneksi.php";
 $queryProduk = mysqli_query($con, "SELECT * FROM produk");
 $jumlahProduk = mysqli_num_rows($queryProduk);
 
+$queryKategori = mysqli_query($con, "SELECT * FROM kategori");
 ?>
 
 
@@ -59,15 +60,66 @@ $jumlahProduk = mysqli_num_rows($queryProduk);
     <div class="my-5 col-12 col-md-6">
         <h3>Tambah Produk</h3>
 
-        <form action="" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
             <div>
-                <label for="produk">Produk</label>
-                <input type="text" id="produk" name="produk" placeholder="input nama produk" class="form-control">
+                <label for="nama">Nama</label>
+                <input type="text" id="produk" name="nama" placeholder="input nama produk" class="form-control" >
             </div>
+            <div class=>
+                <label for="kategori">kategori</label>
+                <select name="kategori" id="kategori" class="form-control" >
+                    <option value="">Pilih kategori</option>
+                    <?php
+                        while($data=mysqli_fetch_array($queryKategori)){
+                        ?>
+                            <option value="<?php echo $data['id'] ?>"><?php echo $data['nama']; ?> </option>
+                        <?php        
+                        }
+                    ?>
+                </select>
+            </div>
+
+            <div>
+                <label for="harga">Harga</label>
+                <input type="number" class="form-control" name="harga" >
+            </div>
+
+            <div>
+                <label for="foto">Foto</label>
+                <input type="file" name="foto" id="foto" class="form-control">
+            </div>
+            <label for="detail">Detail</label>
+                <textarea name="detail" id="detail" class="form-control"></textarea>
+
+            <div>
+                <label for="stok" >Stok</label>
+                <select name="stok" id="stok" class="form-control">
+                    <option value="tersedia">Tersedia</option>
+                    <option value="habis">Habis</option>
+                </select>
+            </div>
+
             <div class="mt-3">
                 <button class="btn btn-primary" type="submit" name="simpan_produk">Simpan</button>
             </div>
         </form>
+
+        <?php
+            if(isset($_POST['simpan_produk'])){
+                $nama = htmlspecialchars($_POST['nama']);
+                $kategori = htmlspecialchars($_POST['kategori']);
+                $harga = htmlspecialchars($_POST['harga']);
+
+                if($nama=='' || $kategori=='' || $harga==''){
+                ?>
+                    <div class="alert alert-primary mt-3" role="alert">
+                            Nama, Kategori dan Harga wajib di isi
+                    </div>
+                <?php    
+                }
+
+            }
+        ?>
 
     </div>
     <div class="tabel">
