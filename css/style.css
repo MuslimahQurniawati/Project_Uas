@@ -1,0 +1,38 @@
+.warna1 {
+background-color: #FFB38E;
+}
+
+.warna2 {
+    background-color: #FFCF9D;
+}
+
+.warna3 {
+    background-color: #DE8F5F;
+}
+
+.banner{
+    height: 80vh;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../image/gambar-depan.jpg');
+}
+
+.highlighted-kategori{
+    height: 250px;
+
+}
+
+.kategori-makanan{
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../image/ramyeon.jpg');
+    background-size: cover ;
+    background-position: center;
+}
+
+.kategori-minuman{
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../image/bibimbap.jpg');
+    background-size: cover ;
+    background-position: center;
+}
+.kategori-cemilan{
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../image/bulgogi.jpg');
+    background-size: cover ;
+    background-position: center;
+}

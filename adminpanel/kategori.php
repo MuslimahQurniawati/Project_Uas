@@ -137,12 +137,12 @@ $jumlahKategori = mysqli_num_rows($queryKategori);
                                     <tr>
                                         <td><?php echo $number; ?></td>
                                         <td><?php echo $data['nama']; ?></td>
-                                        <td>
-                                        <a href="kategori-detail.php?p<?php echo $data['id']; ?>" 
-                                        class="btn btn-info">
-                                        <i class="fa fa-search"></i>
-                                    
-                                        </td>
+                                            <td>
+                                            <a href="kategori-detail.php?p<?php echo $data['id']; ?>" 
+                                            class="btn btn-info">
+                                            <i class="fa fa-search"></i></a>
+                                        
+                                            </td>
                                     </tr>
                                 <?php
                                 $number++;

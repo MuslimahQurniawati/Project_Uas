@@ -3,7 +3,7 @@ session_start();
 require "../koneksi.php";
 
     $id = $_GET['p'];
-    $query =mysqli_query($con, "SELECT * FROM kategori WHERE id='p'");
+    $query =mysqli_query($con, "SELECT * FROM kategori WHERE id='$id'");
     $data =mysqli_fetch_array($query);
     
 ?>
@@ -84,7 +84,7 @@ require "../koneksi.php";
                 }
             
 
-            if(isset($_PPOST['deleteBtn'])){
+            if(isset($_POST['deleteBtn'])){
                 $queryDelete = mysqli_query($con, "DELETE FROM kategori WHERE id='$id'");
             
                 if($queryDelete){
@@ -102,5 +102,7 @@ require "../koneksi.php";
         ?>
     </div>
     </div>
+
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
