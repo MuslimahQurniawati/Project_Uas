@@ -1,18 +1,18 @@
 .warna1 {
-background-color: #FFB38E;
+background-color: #EB3678;
 }
 
 .warna2 {
-    background-color: #FFCF9D;
+    background-color: #D91656;
 }
 
 .warna3 {
-    background-color: #DE8F5F;
+    background-color: #FF4E88;
 }
 
 .banner{
     height: 80vh;
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../image/gambar-depan.jpg');
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../image/restoran.jpg');
 }
 
 .highlighted-kategori{
@@ -27,12 +27,24 @@ background-color: #FFB38E;
 }
 
 .kategori-minuman{
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../image/bibimbap.jpg');
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../image/makgeolli.jpg');
     background-size: cover ;
     background-position: center;
 }
 .kategori-cemilan{
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../image/bulgogi.jpg');
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../image/bugopang.jpg');
     background-size: cover ;
     background-position: center;
+}
+.no-decoration{
+    text-decoration: none;
+    color: white;
+}
+.no-decoration:hover{
+    color: #EB3678;
+}
+
+.text-harga{
+    size: 30px;
+    color: #D91656;
 }

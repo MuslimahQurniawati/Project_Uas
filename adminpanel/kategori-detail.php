@@ -2,7 +2,7 @@
 session_start();
 require "../koneksi.php";
 
-    $id = $_GET['p'];
+    
     $query =mysqli_query($con, "SELECT * FROM kategori WHERE id='$id'");
     $data =mysqli_fetch_array($query);
     
